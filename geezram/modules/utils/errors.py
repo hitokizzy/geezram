@@ -7,8 +7,10 @@ from functools import wraps
 
 from pyrogram.errors.exceptions.forbidden_403 import ChatWriteForbidden
 
-from geezram import ERROR_LOG, pbot as app
+from geezram import pbot as app
+from geezram import CONFIG
 
+ERROR_LOG = CONFIG.message_dump
 
 def split_limits(text):
     if len(text) < 2048:
