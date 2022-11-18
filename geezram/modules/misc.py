@@ -504,4 +504,4 @@ CONFIG.dispatcher.add_handler(REPO_HANDLER)
 CONFIG.dispatcher.add_handler(
     DisableAbleCommandHandler("removebotkeyboard", reply_keyboard_remove))
 CONFIG.dispatcher.add_handler(WIKI_HANDLER)
-CONFIG.dispatcher.add_handler(COVID_HANDLER)
+#CONFIG.dispatcher.add_handler(COVID_HANDLER)
