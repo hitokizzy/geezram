@@ -21,6 +21,9 @@ from sqlalchemy.orm import sessionmaker, scoped_session
 from geezram import CONFIG
 import logging
 
+database_url =  CONFIG.database_url # or other relevant config var
+if database_url and database_url.startswith("postgres://"):
+    database_url = database_url.replace("postgres://", "postgresql://", 1)
 
 def start() -> scoped_session:
     try:
