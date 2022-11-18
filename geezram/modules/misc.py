@@ -20,7 +20,7 @@ import wikipedia
 import re
 from datetime import datetime
 from typing import Optional
-from covid import Covid
+#from covid import Covid
 
 import requests
 from telegram import Message, Chat, Update, MessageEntity
@@ -40,7 +40,7 @@ from geezram.modules.tr_engine.strings import tld
 
 from requests import get
 
-cvid = Covid(source="worldometers")
+#cvid = Covid(source="worldometers")
 
 
 def get_id(update: Update, context: CallbackContext):
@@ -387,37 +387,37 @@ def wiki(update: Update, context: CallbackContext):
                 .format(eet))
 
 
-def covid(update: Update, context: CallbackContext):
-    message = update.effective_message
-    chat = update.effective_chat
-    country = str(message.text[len('/covid '):])
-    if country == '':
-        country = "world"
-    if country.lower() in ["south korea", "korea"]:
-        country = "s. korea"
-    try:
-        c_case = cvid.get_status_by_country_name(country)
-    except Exception:
-        message.reply_text(tld(chat.id, "misc_covid_error"))
-        return
-    active = format_integer(c_case["active"])
-    confirmed = format_integer(c_case["confirmed"])
-    country = c_case["country"]
-    critical = format_integer(c_case["critical"])
-    deaths = format_integer(c_case["deaths"])
-    new_cases = format_integer(c_case["new_cases"])
-    new_deaths = format_integer(c_case["new_deaths"])
-    recovered = format_integer(c_case["recovered"])
-    total_tests = c_case["total_tests"]
-    if total_tests == 0:
-        total_tests = "N/A"
-    else:
-        total_tests = format_integer(c_case["total_tests"])
-    reply = tld(chat.id,
-                "misc_covid").format(country, confirmed, new_cases, active,
-                                     critical, deaths, new_deaths, recovered,
-                                     total_tests)
-    message.reply_markdown(reply)
+#def covid(update: Update, context: CallbackContext):
+#    message = update.effective_message
+#    chat = update.effective_chat
+#    country = str(message.text[len('/covid '):])
+#    if country == '':
+#        country = "world"
+#    if country.lower() in ["south korea", "korea"]:
+#        country = "s. korea"
+#    try:
+#        c_case = cvid.get_status_by_country_name(country)
+#    except Exception:
+#        message.reply_text(tld(chat.id, "misc_covid_error"))
+#        return
+ #   active = format_integer(c_case["active"])
+ #   confirmed = format_integer(c_case["confirmed"])
+ #  country = c_case["country"]
+ #   critical = format_integer(c_case["critical"])
+ #   deaths = format_integer(c_case["deaths"])
+ #   new_cases = format_integer(c_case["new_cases"])
+ #   new_deaths = format_integer(c_case["new_deaths"])
+ #   recovered = format_integer(c_case["recovered"])
+  #  total_tests = c_case["total_tests"]
+  #  if total_tests == 0:
+  #      total_tests = "N/A"
+  #  else:
+  #      total_tests = format_integer(c_case["total_tests"])
+  #  reply = tld(chat.id,
+  #              "misc_covid").format(country, confirmed, new_cases, active,
+   #                                  critical, deaths, new_deaths, recovered,
+   #                                  total_tests)
+    #message.reply_markdown(reply)
 
 
 def format_integer(number, thousand_separator=','):
