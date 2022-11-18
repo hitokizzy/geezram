@@ -18,9 +18,10 @@
 import logging
 import sys
 import yaml
+import os
 from pydantic import BaseModel, ValidationError
 from typing import Optional, List, Set, Any
-
+from pyrogram import Client
 from telethon import TelegramClient
 import telegram.ext as tg
 
@@ -48,6 +49,7 @@ class GeezramConfig(BaseModel):
     telethon_client: Optional[Any] = None
     updater: Optional[Any] = None
     dispatcher: Optional[Any] = None
+
 
 
 logging.basicConfig(
@@ -83,7 +85,14 @@ except ValidationError as validation_error:
     logging.error(
         f"Something went wrong when parsing config.yml: {validation_error}")
     exit(1)
-
+    
+pbot = Client(
+    ":memory:",
+    api_id=CONFIG.api_id,
+    api_hash=CONFIG.api_hash,
+    bot_token=CONFIG.bot_token,
+    workers=min(32, os.cpu_count() + 4),
+)
 CONFIG.sudo_users.add(CONFIG.owner_id)
 
 try:
