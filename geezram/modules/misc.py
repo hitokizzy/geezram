@@ -485,10 +485,10 @@ PASTE_STATS_HANDLER = DisableAbleCommandHandler("pastestats",
                                                 run_async=True)
 UD_HANDLER = DisableAbleCommandHandler("ud", ud, run_async=True)
 WIKI_HANDLER = DisableAbleCommandHandler("wiki", wiki, run_async=True)
-COVID_HANDLER = DisableAbleCommandHandler("covid",
-                                          covid,
-                                          run_async=True,
-                                          admin_ok=True)
+#COVID_HANDLER = DisableAbleCommandHandler("covid",
+#                                          covid,
+#                                          run_async=True,
+#                                          admin_ok=True)
 
 CONFIG.dispatcher.add_handler(UD_HANDLER)
 CONFIG.dispatcher.add_handler(PASTE_HANDLER)
