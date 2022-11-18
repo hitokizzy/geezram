@@ -5,8 +5,8 @@ from telethon import __version__ as s
 from pyrogram.types import Message, InlineKeyboardMarkup, InlineKeyboardButton
 from pyrogram import filters
 from geezram import pbot
-from geezram.utils.errors import capture_err
-from geezram.utils.functions import make_carbon
+from geezram.modules.utils.errors import capture_err
+from geezram.modules.utils.functions import make_carbon
 
 
 @pbot.on_message(filters.command("carbon"))
